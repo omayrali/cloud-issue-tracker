@@ -23,7 +23,7 @@ async function writeIssues(issues) {
   await fs.writeFile(DATA_FILE, JSON.stringify(issues, null, 2));
 }
 
-async function createIssues(input) {
+async function createIssue(input) {
   const issues = await readIssues();
   const issue = {
     id: randomUUID(),
@@ -55,6 +55,6 @@ async function updateIssueStatus(id, status) {
 
 module.exports = {
   readIssues,
-  createIssues,
+  createIssue,
   updateIssueStatus,
 };

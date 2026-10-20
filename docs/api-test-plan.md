@@ -1,11 +1,14 @@
-| Test ID | Request                                   | Expected Result                                                                                       |
-| ------- | ----------------------------------------- | ----------------------------------------------------------------------------------------------------- |
-| T01     | GET /api/issues                           | 200; JSON array returned.                                                                             |
-| T02     | POST valid title, description, priority   | 201; complete created issue returned.                                                                 |
-| T03     | POST missing title                        | 400; VALIDATION_ERROR.                                                                                |
-| T04     | POST invalid priority = Critical          | 400; VALIDATION_ERROR.                                                                                |
-| T05     | PATCH existing issue status = Resolved    | 200; returned status is Resolved.                                                                     |
-| T06     | PATCH status = Deleted                    | 400; VALIDATION_ERROR.                                                                                |
-| T07     | PATCH unknown issue ID                    | 404; ISSUE_NOT_FOUND.                                                                                 |
-| T08     | GET when no issues exist                  | 200; empty JSON array.                                                                                |
-| T09     | Send unexpected extra server-owned fields | Server ignores/rejects according to contract; client cannot choose authoritative id/status/createdAt. |
+| Test ID | Request                                   | Expected Result                                                                                       | Actual Result                        | Pass/Fail |
+| ------- | ----------------------------------------- | ----------------------------------------------------------------------------------------------------- | ------------------------------------ | --------- |
+| T01     | GET /api/issues                           | 200; JSON array returned.                                                                             | 200; array with 1 issue              | Pass      |
+| T02     | POST valid title, description, priority   | 201; complete created issue returned.                                                                 | 201; complete created issue returned | Pass      |
+| T03     | POST missing title                        | 400; VALIDATION_ERROR.                                                                                | 400; VALIDATION_ERROR.               | Pass      |
+| T04     | POST invalid priority = Critical          | 400; VALIDATION_ERROR.                                                                                | 400; VALIDATION_ERROR.               | Pass      |
+| T05     | PATCH existing issue status = Resolved    | 200; returned status is Resolved.                                                                     | 200; returned status is Resolved     | Pass      |
+| T06     | PATCH status = Deleted                    | 400; VALIDATION_ERROR.                                                                                | 400; VALIDATION_ERROR.               | Pass      |
+| T07     | PATCH unknown issue ID                    | 404; ISSUE_NOT_FOUND.                                                                                 | 404; ISSUE_NOT_FOUND.                | Pass      |
+| T08     | GET when no issues exist                  | 200; empty JSON array.                                                                                | 200; empty JSON array.               | Pass      |
+| T09     | Send unexpected extra server-owned fields | Server ignores/rejects according to contract; client cannot choose authoritative id/status/createdAt. | 201; Server ignored id and createdAt | Pass      |
+| T10     | Create without JSON                       | 415; UNSUPPORTED_MEDIA_TYPE.                                                                          | 415; UNSUPPORTED_MEDIA_TYPE.         | Pass      |
+| T11     | Create with malformed JSON                | 400; VALIDATION_ERROR: Request body is not valid JSON. The server keeps running.                      | 400; VALIDATION_ERROR                | Pass      |
+| T12     | Unknown route                             | 404; ROUTE_NOT_FOUND.                                                                                 | 404; ROUTE_NOT_FOUND                 | Pass      |

@@ -6,5 +6,19 @@
     "priority": "High",
     "status": "Open",
     "createdAt": "2026-09-01T09:00:00.000Z"
+  },
+  {
+    "id": "1a7d2376-3786-43e2-95fb-f6159d676461",
+    "title": "Printer unavailable",
+    "priority": "Medium",
+    "status": "Resolved",
+    "createdAt": "2026-10-20T07:01:31.904Z"
+  },
+  {
+    "id": "3e7b5074-071d-4600-b047-3991b604d695",
+    "title": "Projector flickering",
+    "priority": "Low",
+    "status": "Open",
+    "createdAt": "2026-10-20T07:24:38.355Z"
   }
 ]
